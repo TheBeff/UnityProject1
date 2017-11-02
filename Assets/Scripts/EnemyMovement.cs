@@ -17,6 +17,8 @@ public class EnemyMovement : MonoBehaviour {
 	Vector2 newVelocity;
 	float distanceToTarget;
 
+	public float targetBounceDistance;
+
 	public float enemySpeed;
 
 	// Use this for initialization
@@ -27,7 +29,7 @@ public class EnemyMovement : MonoBehaviour {
 		currentPosition = rb.position;
 		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;
 
-		targetPosition = new Vector2 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax));
+		selectRandomTarget ();
 
 	}
 	
@@ -36,8 +38,16 @@ public class EnemyMovement : MonoBehaviour {
 		
 		distanceToTarget = (targetPosition - rb.position).magnitude;
 
-		newVelocity = (targetPosition - rb.position).normalized * enemySpeed;
-		rb.velocity = newVelocity;
+		if (distanceToTarget > targetBounceDistance) {
+			newVelocity = (targetPosition - rb.position).normalized * enemySpeed;
+			rb.velocity = newVelocity;
+		} else {
+			selectRandomTarget ();
+		}
 
+	}
+
+	void selectRandomTarget () {
+		targetPosition = new Vector2 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax));
 	}
 }
