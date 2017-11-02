@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public float backgroundScrollSpeed;
+	public float safeZoneMax;
 
 	private bool gameOver;
 

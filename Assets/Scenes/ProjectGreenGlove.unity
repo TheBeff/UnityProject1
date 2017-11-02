@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundScrollSpeed: 0.08
+  safeZoneMax: -2.6
 --- !u!4 &128545377
 Transform:
   m_ObjectHideFlags: 0
@@ -202,6 +203,8 @@ GameObject:
   m_Component:
   - component: {fileID: 442412466}
   - component: {fileID: 442412465}
+  - component: {fileID: 442412467}
+  - component: {fileID: 442412468}
   m_Layer: 0
   m_Name: glove
   m_TagString: Untagged
@@ -260,12 +263,43 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442412464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -3.45, z: 0}
+  m_LocalPosition: {x: -0.05, y: -3.24, z: 0}
   m_LocalScale: {x: 3.222868, y: 3.222868, z: 3.222868}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &442412467
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 442412464}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &442412468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 442412464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b2693eed5dc43ffa049525d6e313f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &600937942
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,11 +571,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4355024195096272, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.49
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 4355024195096272, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.25
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 4355024195096272, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
       propertyPath: m_LocalPosition.z

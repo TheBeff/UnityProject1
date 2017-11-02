@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4355024195096272}
   - component: {fileID: 212135241114644622}
   - component: {fileID: 114653802437362506}
+  - component: {fileID: 50207101403565802}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -41,6 +42,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50207101403565802
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855304499191748}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 4
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!114 &114653802437362506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29d039155bd40469735493ba26445c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpeed: 0
 --- !u!212 &212135241114644622
 SpriteRenderer:
   m_ObjectHideFlags: 1
