@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMovement : MonoBehaviour {
+public class SpawnerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
