@@ -6,13 +6,16 @@ public class EnemyMovement : MonoBehaviour {
 
 	Rigidbody2D rb;
 
+	//these variables will set the bounds for the enemy to move within
 	float targetYMin;
 	public float targetYMax;
 	public float targetXMin;
 	public float targetXMax;
 
-	Vector3 currentPosition;
-	Vector3 targetPosition;
+	Vector2 currentPosition;
+	Vector2 targetPosition;
+	Vector2 newVelocity;
+	float distanceToTarget;
 
 	public float enemySpeed;
 
@@ -21,15 +24,20 @@ public class EnemyMovement : MonoBehaviour {
 
 		rb = this.GetComponent<Rigidbody2D> ();
 
-		currentPosition = transform.position;
+		currentPosition = rb.position;
 		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;
 
-		targetPosition = new Vector3 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax), 0);
+		targetPosition = new Vector2 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax));
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+		distanceToTarget = (targetPosition - rb.position).magnitude;
+
+		newVelocity = (targetPosition - rb.position).normalized * enemySpeed;
+		rb.velocity = newVelocity;
+
 	}
 }
