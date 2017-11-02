@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-	Rigidbody2D rb;
+	private Rigidbody2D rb;
 
 	//these variables will set the bounds for the enemy to move within
-	float targetYMin;
+	private float targetYMin;
 	public float targetYMax;
 	public float targetXMin;
 	public float targetXMax;
 
-	Vector2 currentPosition;
-	Vector2 targetPosition;
-	Vector2 newVelocity;
-	float distanceToTarget;
+	//these variables help us manage position for enemy movement targets
+	private Vector2 currentPosition;
+	private Vector2 targetPosition;
+	private Vector2 newVelocity;
+	private float distanceToTarget;
 
+	//how close the enemy should get to its target before it picks another one
 	public float targetBounceDistance;
 
 	public float enemySpeed;
@@ -27,6 +29,8 @@ public class EnemyMovement : MonoBehaviour {
 		rb = this.GetComponent<Rigidbody2D> ();
 
 		currentPosition = rb.position;
+
+		//the minimum Y value for the enemy should be determined by the player's "safe zone" size
 		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;
 
 		selectRandomTarget ();
@@ -35,9 +39,12 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+		//how close the enemy is to its target
 		distanceToTarget = (targetPosition - rb.position).magnitude;
 
+		//if its further than the limit we've set, move towards the target
+		//otherwise, select a new one
 		if (distanceToTarget > targetBounceDistance) {
 			newVelocity = (targetPosition - rb.position).normalized * enemySpeed;
 			rb.velocity = newVelocity;
@@ -46,7 +53,8 @@ public class EnemyMovement : MonoBehaviour {
 		}
 
 	}
-
+		
+	//this function selects a random positional target based on the coordinate bounds we set
 	void selectRandomTarget () {
 		targetPosition = new Vector2 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax));
 	}
