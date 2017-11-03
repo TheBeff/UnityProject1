@@ -73,7 +73,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29d039155bd40469735493ba26445c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 0
+  targetYMax: 5.05
+  targetXMin: -3.4
+  targetXMax: 3.4
+  targetBounceDistance: 0.5
+  enemySpeed: 120
 --- !u!212 &212135241114644622
 SpriteRenderer:
   m_ObjectHideFlags: 1
