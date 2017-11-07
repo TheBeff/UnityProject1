@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 	public float backgroundScrollSpeed;
 	public float safeZoneMax;
 
-	private bool gameOver;
+	public bool gameOver;
 
 	// Use this for initialization
 	void Start () {

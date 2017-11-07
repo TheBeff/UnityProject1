@@ -13,7 +13,6 @@ public class EnemyMovement : MonoBehaviour {
 	public float targetXMax;
 
 	//these variables help us manage position for enemy movement targets
-	private Vector2 currentPosition;
 	private Vector2 targetPosition;
 	private Vector2 newVelocity;
 	private float distanceToTarget;
@@ -28,8 +27,6 @@ public class EnemyMovement : MonoBehaviour {
 	void Start () {
 
 		rb = this.GetComponent<Rigidbody2D> ();
-
-		currentPosition = rb.position;
 
 		//the minimum Y value for the enemy should be determined by the player's "safe zone" size
 		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;

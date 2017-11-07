@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundScrollSpeed: 0.08
   safeZoneMax: -0.1
+  gameOver: 0
 --- !u!4 &128545377
 Transform:
   m_ObjectHideFlags: 0
@@ -206,6 +207,7 @@ GameObject:
   - component: {fileID: 442412467}
   - component: {fileID: 442412468}
   - component: {fileID: 442412469}
+  - component: {fileID: 442412470}
   m_Layer: 0
   m_Name: glove
   m_TagString: Untagged
@@ -301,8 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b2693eed5dc43ffa049525d6e313f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jiggle_offset: 0
-  gloveSpeed: 3
+  jiggle_offset: 0.4
+  gloveSpeed: 5
 --- !u!61 &442412469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328,6 +330,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.70116687, y: 0.7917639}
   m_EdgeRadius: 0
+--- !u!114 &442412470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 442412464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fc37db6283f4f268d23a6f1a74329b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &600937942
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +647,11 @@ Prefab:
         type: 2}
       propertyPath: enemySpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114125046689528734, guid: 2792498a2225743c1b0d284e7482953f,
+        type: 2}
+      propertyPath: health
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
