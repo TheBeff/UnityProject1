@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Menu.unity
-    guid: a5ee7752b11a9421890b4110a438bf98
-  - enabled: 1
-    path: Assets/TempProject.unity
+    path: Assets/Scenes/ProjectGreenGlove.unity
     guid: 67350e537b47b461f9875917ad43f633
