@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	public float enemySpeed;
 
+
 	// Use this for initialization
 	void Start () {
 
