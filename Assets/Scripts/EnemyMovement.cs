@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
 	private Rigidbody2D rb;
+	private Animator anim;
 
 	//these variables will set the bounds for the enemy to move within
 	private float targetYMin;
@@ -22,11 +23,13 @@ public class EnemyMovement : MonoBehaviour {
 
 	public float enemySpeed;
 
+	public AudioClip bobOw;
 
 	// Use this for initialization
 	void Start () {
 
-		rb = this.GetComponent<Rigidbody2D> ();
+		rb = GetComponent<Rigidbody2D> ();
+		anim = GetComponent<Animator> ();
 
 		//the minimum Y value for the enemy should be determined by the player's "safe zone" size
 		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;
@@ -55,5 +58,17 @@ public class EnemyMovement : MonoBehaviour {
 	//this function selects a random positional target based on the coordinate bounds we set
 	void selectRandomTarget () {
 		targetPosition = new Vector2 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax));
+	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.CompareTag("Player")){
+			anim.SetBool("Punched", true);
+			GetComponent<AudioSource> ().PlayOneShot (bobOw);
+		}
+	}
+	void OnCollisionExit2D(Collision2D coll){
+		if (coll.gameObject.CompareTag("Player")){
+			anim.SetBool("Punched", false);
+		}
 	}
 }
