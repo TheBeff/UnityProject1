@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212135241114644622}
   - component: {fileID: 114653802437362506}
   - component: {fileID: 50207101403565802}
-  - component: {fileID: 61734258980383016}
   - component: {fileID: 114125046689528734}
+  - component: {fileID: 58459141769903742}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -64,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &61734258980383016
-BoxCollider2D:
+--- !u!58 &58459141769903742
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,19 +76,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
-    newSize: {x: 0.5, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.0018279087}
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
-  m_EdgeRadius: 0
+  m_Radius: 0.2270349
 --- !u!114 &114125046689528734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f068a9dc2774b2796868424033c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 5
 --- !u!114 &114653802437362506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +106,7 @@ MonoBehaviour:
   targetXMin: -3.4
   targetXMax: 3.4
   targetBounceDistance: 0.5
-  enemySpeed: 120
+  enemySpeed: 4
 --- !u!212 &212135241114644622
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -151,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cf0bad50a9de749b994a9665012a51e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c0c68b9547074a48b2a5e5080fd103a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

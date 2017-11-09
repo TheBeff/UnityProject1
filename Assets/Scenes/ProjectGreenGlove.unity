@@ -206,8 +206,8 @@ GameObject:
   - component: {fileID: 442412465}
   - component: {fileID: 442412467}
   - component: {fileID: 442412468}
-  - component: {fileID: 442412469}
   - component: {fileID: 442412470}
+  - component: {fileID: 442412469}
   m_Layer: 0
   m_Name: glove
   m_TagString: Untagged
@@ -279,7 +279,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442412464}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -304,9 +304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jiggle_offset: 0.4
-  gloveSpeed: 5
---- !u!61 &442412469
-BoxCollider2D:
+  gloveSpeed: 11
+--- !u!60 &442412469
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -317,7 +317,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008236051, y: -0.004118055}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -327,9 +327,22 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.70116687, y: 0.7917639}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.04799702, y: 0.34849048}
+      - {x: -0.109283365, y: 0.3482499}
+      - {x: -0.15914024, y: 0.35471848}
+      - {x: -0.24527802, y: 0.17534022}
+      - {x: -0.3279529, y: 0.08765622}
+      - {x: -0.32795292, y: -0.10353118}
+      - {x: -0.20326519, y: -0.20089057}
+      - {x: -0.20190904, y: -0.341778}
+      - {x: -0.14531219, y: -0.38059375}
+      - {x: 0.21089058, y: -0.3870627}
+      - {x: 0.20939209, y: -0.1571005}
+      - {x: 0.30234388, y: -0.095076926}
+      - {x: 0.3276561, y: 0.039078783}
+      - {x: 0.29854655, y: 0.3402968}
 --- !u!114 &442412470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +617,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0263b94e7d18842abb7a2432a7cb600d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1847100289 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1855304499191748, guid: 2792498a2225743c1b0d284e7482953f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2044624761}
+--- !u!111 &1847100290
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847100289}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 76f6de433272444aaad27a633b269708, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &2044624761
 Prefab:
   m_ObjectHideFlags: 0
@@ -642,16 +674,6 @@ Prefab:
     - target: {fileID: 4355024195096272, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114653802437362506, guid: 2792498a2225743c1b0d284e7482953f,
-        type: 2}
-      propertyPath: enemySpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114125046689528734, guid: 2792498a2225743c1b0d284e7482953f,
-        type: 2}
-      propertyPath: health
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
