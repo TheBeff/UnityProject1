@@ -17,4 +17,10 @@ public class EnemyHealth : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.CompareTag ("Player")) {
+			health -= 1;
+		}
+	}
 }
