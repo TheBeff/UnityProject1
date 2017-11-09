@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 1179184311}
   - component: {fileID: 1179184310}
   - component: {fileID: 1179184314}
+  - component: {fileID: 1179184315}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -617,6 +618,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0263b94e7d18842abb7a2432a7cb600d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1179184315
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1179184309}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4dd23d0122a534b0e8d111943fd90e2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &2044624761
 Prefab:
   m_ObjectHideFlags: 0
@@ -675,6 +693,11 @@ Prefab:
         type: 2}
       propertyPath: m_Volume
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114125046689528734, guid: 2792498a2225743c1b0d284e7482953f,
+        type: 2}
+      propertyPath: health
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2792498a2225743c1b0d284e7482953f, type: 2}
