@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jiggle_offset: 0.4
   gloveSpeed: 11
+  gloveScale: 0.04
 --- !u!60 &442412469
 PolygonCollider2D:
   m_ObjectHideFlags: 0

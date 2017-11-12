@@ -14,17 +14,19 @@ public class GloveMovement : MonoBehaviour {
 	private Vector2 newVelocity;
 
 	public float gloveSpeed;
-	// Use this for initialization
+	public float gloveScale;
+
+
 	void Start () {
 
 		rb = this.GetComponent<Rigidbody2D> ();
 		startPosition = this.transform.position;//new Vector2 (0, -3.6f);
 	}
 	
-	// Update is called once per frame
 	void Update () {
 
 		moveGlove ();
+		scaleGlove ();
 
 	}
 
@@ -62,6 +64,11 @@ public class GloveMovement : MonoBehaviour {
 		}
 	}
 
+	void scaleGlove(){
+		if (rb.velocity.y > 0) transform.localScale += new Vector3 (gloveScale, gloveScale, 0);
+		if (rb.velocity.y < 0) transform.localScale -= new Vector3 (gloveScale, gloveScale, 0);
+
+	}
 
 	//this function returns the glove to the starting position when not moving
 
