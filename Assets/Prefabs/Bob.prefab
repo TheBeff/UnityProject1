@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  explosion: {fileID: 1860048535072264, guid: 2ddfb1506315e42c4b8493200dc3e705, type: 2}
 --- !u!114 &114653802437362506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,7 +207,7 @@ MonoBehaviour:
   targetXMax: 3.4
   targetBounceDistance: 0.5
   enemySpeed: 4
-  bobOw: {fileID: 0}
+  bobOw: {fileID: 8300000, guid: 053e76f82ba5445c1bdfd324dd722a79, type: 3}
 --- !u!212 &212135241114644622
 SpriteRenderer:
   m_ObjectHideFlags: 1

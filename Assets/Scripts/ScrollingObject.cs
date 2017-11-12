@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this script controls the scrolling background
+
 public class ScrollingObject : MonoBehaviour {
 
 	GameObject gameManager;
@@ -9,7 +11,6 @@ public class ScrollingObject : MonoBehaviour {
 	private float newVerticalPosition;
 	private float resetVerticalPosition;
 
-	// Use this for initialization
 	void Start () {
 
 		//fetch the background scroll speed
@@ -19,8 +20,7 @@ public class ScrollingObject : MonoBehaviour {
 		//create a copy of the scrolling object's current vertical position
 		newVerticalPosition = transform.position.y;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 		//subtract the speed from that copy

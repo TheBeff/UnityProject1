@@ -26,13 +26,9 @@ public class GloveMovement : MonoBehaviour {
 
 		moveGlove ();
 
-//		newVelocity = 
-//
-//		if (!isMoving && rb.position.y > -3.6f) {
-//			rb.velocity = newVelocity;
-//		}
-
 	}
+
+	//basic WASD controls
 
 	void moveGlove(){
 
@@ -42,12 +38,10 @@ public class GloveMovement : MonoBehaviour {
 
 		if(Input.GetKey(KeyCode.S)){
 			isMoving = true;
-			print ("ur pushing S");
 			newVelocity += new Vector2(0, -1 * gloveSpeed);
 		}
 		if(Input.GetKey(KeyCode.W)){
 			isMoving = true;
-			print ("ur pushing W");
 			newVelocity += new Vector2(0, gloveSpeed);
 		}
 
@@ -68,6 +62,8 @@ public class GloveMovement : MonoBehaviour {
 		}
 	}
 
+
+	//this function returns the glove to the starting position when not moving
 
 	void resetGlove(){
 		if (rb.position != startPosition) {
