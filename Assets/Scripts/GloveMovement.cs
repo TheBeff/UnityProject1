@@ -78,7 +78,6 @@ public class GloveMovement : MonoBehaviour {
 
 	void resetGlove(){
 		if (rb.position != startPosition) {
-			Debug.Log ("trying to reset position");
 			Vector2 newVelocity = new Vector2 (0, 0);
 			if (rb.position.x < startPosition.x - jiggle_offset) 
 				newVelocity += new Vector2(gloveSpeed, 0);
