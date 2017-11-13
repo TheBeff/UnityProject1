@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour {
 	public float targetBounceDistance;
 
 	public float enemySpeed;
+	private int level;
 
 	public AudioClip bobOw;
 
@@ -32,6 +33,8 @@ public class EnemyMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		shake = Camera.main.GetComponent<Animator> ();
+
+		level = GameObject.Find ("EnemySpawner").GetComponent<SpawnerScript> ().level;
 
 		//the minimum Y value for the enemy should be determined by the player's "safe zone" size
 		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;
@@ -49,7 +52,7 @@ public class EnemyMovement : MonoBehaviour {
 		//if its further than the limit we've set, move towards the target
 		//otherwise, select a new one
 		if (distanceToTarget > targetBounceDistance) {
-			newVelocity = (targetPosition - rb.position).normalized * enemySpeed;
+			newVelocity = (targetPosition - rb.position).normalized * (enemySpeed + level);
 			rb.velocity = newVelocity;
 		} else {
 			selectRandomTarget ();

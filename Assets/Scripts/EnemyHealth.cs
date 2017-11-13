@@ -9,9 +9,12 @@ public class EnemyHealth : MonoBehaviour {
 	private Vector3 localScale;
 	private Vector3 currentPosition;
 	private bool exploded = false;
+	int level;
 
 	// Use this for initialization
 	void Start () {
+		level = GameObject.Find ("EnemySpawner").GetComponent<SpawnerScript> ().level;
+		health += level;  
 	}
 	
 	// Update is called once per frame
