@@ -16,6 +16,8 @@ public class GloveMovement : MonoBehaviour {
 	public float gloveSpeed;
 	public float gloveScale;
 
+	public GameObject curtain;
+
 
 	void Start () {
 
@@ -25,7 +27,9 @@ public class GloveMovement : MonoBehaviour {
 	
 	void Update () {
 
-		moveGlove ();
+		if (!curtain)
+			moveGlove ();
+		
 		scaleGlove ();
 
 	}
