@@ -5,22 +5,24 @@ using UnityEngine;
 public class CurtainMovement : MonoBehaviour {
 
 	public float curtainSpeed;
-	bool intro;
+	GameManager gameManager;
 	Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
-		intro = GameObject.Find ("GameManager").GetComponent<GameManager> ().intro;
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		rb = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Space))
-			intro = false;
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			gameManager.intro = false;
+			gameManager.gameStarted = true;
+		}
 
-		if (!intro)
+		if (!gameManager.intro)
 			rb.velocity += new Vector2 (0, curtainSpeed);
 
 		if (transform.position.y > 12)

@@ -8,16 +8,25 @@ public class GameManager : MonoBehaviour {
 	public float safeZoneMax;
 
 	public bool intro;
+	public bool gameStarted;
 	public bool gameOver;
+
+	AudioSource soundtrack;
 
 	// Use this for initialization
 	void Start () {
 		intro = true;
+		gameStarted = false;
 		gameOver = false;
+		soundtrack = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!intro && gameStarted) {
+			gameStarted = false;
+			soundtrack.Play ();
+			Debug.Log ("y u no play");
+		}
 	}
 }
