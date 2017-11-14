@@ -28,7 +28,7 @@ public class ScrollingObject : MonoBehaviour {
 
 		//if the background falls below the game screen, put it back on top of it
 		//otherwise, set it to the new position
-		if (transform.position.y <= -17.88) {
+		if (transform.position.y <= -17.88f) {
 			transform.position = new Vector3 (0, 26.65f, 0);
 			newVerticalPosition = transform.position.y;
 		} else {

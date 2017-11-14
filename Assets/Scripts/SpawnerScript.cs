@@ -20,17 +20,22 @@ public class SpawnerScript : MonoBehaviour {
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		level = 0;
 		position = transform.position;
+
+		//bob is alive at the start
 		deadBob = false;
+
+		//save the timer so it can be reset
 		timeToBob = timer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		//if bob is dead, start the spawn timer
 		if (deadBob) {
-			Debug.Log ("bob is dead");
 			timer -= Time.deltaTime;
-			Debug.Log ("time until bob: " + timer);
+
+			//once it's run down, gain a level, make a new bob and reset the timer
 
 			if (timer <= 0 && !currentBob) {
 				level++;
