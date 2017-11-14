@@ -10,11 +10,12 @@ public class EnemyHealth : MonoBehaviour {
 	private Vector3 currentPosition;
 	private bool exploded = false;
 	int level;
+	SpawnerScript spawner;
 
 	// Use this for initialization
 	void Start () {
-		level = GameObject.Find ("EnemySpawner").GetComponent<SpawnerScript> ().level;
-		health += level;  
+		spawner = GameObject.Find ("EnemySpawner").GetComponent<SpawnerScript>();
+		health += spawner.level;  
 	}
 	
 	// Update is called once per frame
@@ -26,6 +27,7 @@ public class EnemyHealth : MonoBehaviour {
 //			localScale.x++;
 //			localScale.y++;
 //			transform.localScale = localScale;
+			spawner.deadBob = true;
 			Destroy (gameObject, 1);
 			if (!exploded) createExplosion ();
 		}

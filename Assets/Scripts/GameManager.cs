@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour {
 		if (!intro && gameStarted) {
 			gameStarted = false;
 			soundtrack.Play ();
-			Debug.Log ("y u no play");
 		}
 	}
 }
