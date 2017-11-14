@@ -775,7 +775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &947647593
 Rigidbody2D:
   serializedVersion: 4
@@ -909,7 +909,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.9862069, g: 0.872, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.5254902, g: 0.1137255, b: 0.10588236, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

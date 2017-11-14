@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour {
 	private Animator anim;
 	private Animator shake;
 
+	private GameManager gameManager;
+
 	//these variables will set the bounds for the enemy to move within
 	private float targetYMin;
 	public float targetYMax;
@@ -46,8 +48,10 @@ public class EnemyMovement : MonoBehaviour {
 
 		level = GameObject.Find ("EnemySpawner").GetComponent<SpawnerScript> ().level;
 
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+
 		//the minimum Y value for the enemy should be determined by the player's "safe zone" size
-		targetYMin = GameObject.Find ("GameManager").GetComponent<GameManager> ().safeZoneMax;
+		targetYMin = gameManager.safeZoneMax;
 
 		selectRandomTarget ();
 
@@ -61,6 +65,14 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if(!gameManager.intro)
+			bobMovement ();
+	}
+
+	//Bob's movement behavior
+
+	void bobMovement(){
 
 		//countdown to attack
 		timer -= Time.deltaTime;
@@ -69,10 +81,10 @@ public class EnemyMovement : MonoBehaviour {
 		distanceToTarget = (targetPosition - rb.position).magnitude;
 
 		//if it's time to attack, do so
+
 		if (timer <= 0) {
 			attacking = true;
 		} 
-
 		if (attacking) {
 			attack ();
 		} else {
@@ -85,8 +97,6 @@ public class EnemyMovement : MonoBehaviour {
 				selectRandomTarget ();
 			}	
 		}
-
-
 	}
 		
 	//this function selects a random positional target based on the coordinate bounds we set
