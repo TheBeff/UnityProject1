@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProjectGreenGlove.unity
     guid: 67350e537b47b461f9875917ad43f633
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3138d5e846c9045ba90e5fa3f49b2bf4

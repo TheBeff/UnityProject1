@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour {
 			gameStarted = false;
 			soundtrack.Play ();
 		}
-			
+
+		if (gameOver)
+			SceneManager.LoadScene ("GameOver");
 	}
 }
