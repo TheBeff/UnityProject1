@@ -5,17 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour {
 
-	//variables needed for making sure the user types two 'r's to reset
 	float maxDelay = 0.5f;
 	bool resetReady = false;
 
+	AudioSource theme;
+
 	// Use this for initialization
 	void Start () {
-		
+		theme = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		//checks to make sure the player types TWO 'r's not just one to reset
 		if (Input.GetKeyDown("r")){
 			if (resetReady)
 				Reset ();
@@ -26,6 +29,7 @@ public class GameOverManager : MonoBehaviour {
 
 	void Reset(){
 		resetReady = false;
+		theme.Stop ();
 		SceneManager.LoadScene ("ProjectGreenGlove");
 	}
 
