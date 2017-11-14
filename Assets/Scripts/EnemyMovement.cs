@@ -25,6 +25,16 @@ public class EnemyMovement : MonoBehaviour {
 	public float enemySpeed;
 	private int level;
 
+	//these are variables for Bob's attack
+	public float timeToAttack;
+	private float timer;
+	private bool attacking;
+	private GameObject glove;
+	Rigidbody2D gloveRb;
+	GloveHealth gloveHealth;
+
+	//sound variables
+
 	public AudioClip bobOw;
 
 	// Use this for initialization
@@ -41,22 +51,41 @@ public class EnemyMovement : MonoBehaviour {
 
 		selectRandomTarget ();
 
+		timer = timeToAttack;
+		attacking = false;
+		glove = GameObject.Find ("glove");
+		gloveRb = glove.GetComponent<Rigidbody2D> ();
+		gloveHealth = glove.GetComponent<GloveHealth> ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		//countdown to attack
+		timer -= Time.deltaTime;
+
 		//how close the enemy is to its target
 		distanceToTarget = (targetPosition - rb.position).magnitude;
 
-		//if its further than the limit we've set, move towards the target
-		//otherwise, select a new one
-		if (distanceToTarget > targetBounceDistance) {
-			newVelocity = (targetPosition - rb.position).normalized * (enemySpeed + level);
-			rb.velocity = newVelocity;
+		//if it's time to attack, do so
+		if (timer <= 0) {
+			attacking = true;
+		} 
+
+		if (attacking) {
+			attack ();
 		} else {
-			selectRandomTarget ();
+			//else, if Bob is further than the limit we've set, move towards the target
+			//otherwise, select a new one
+			if (distanceToTarget > targetBounceDistance) {
+				newVelocity = (targetPosition - rb.position).normalized * (enemySpeed + level);
+				rb.velocity = newVelocity;
+			} else {
+				selectRandomTarget ();
+			}	
 		}
+
 
 	}
 		
@@ -65,12 +94,33 @@ public class EnemyMovement : MonoBehaviour {
 		targetPosition = new Vector2 (Random.Range (targetXMin, targetXMax), Random.Range(targetYMin, targetYMax));
 	}
 
+	void attack(){
+		Debug.DrawRay (transform.position, glove.transform.position);
+		Debug.Log ("attacked!");
+		newVelocity = (gloveRb.position - rb.position).normalized * (enemySpeed * (level + 1));
+		rb.velocity = newVelocity;
+	}
+
+	void damage(){
+		Debug.Log ("doing damage");
+		gloveHealth.health--;
+		Debug.Log ("health: " + gloveHealth.health);
+		attacking = false;
+		timer = timeToAttack;
+	}
+
+	//make the screen shake if bob is punched
+
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.gameObject.CompareTag("Player")){
+		if (coll.gameObject.CompareTag("Player") && !attacking){
 			anim.SetBool("Punched", true);
 			GetComponent<AudioSource> ().PlayOneShot (bobOw);
 			//shake.SetBool("Punched", true);
 			shake.Play("ScreenShake");
+		}
+
+		if (coll.gameObject.CompareTag ("Player") && attacking) {
+			damage ();
 		}
 	}
 	void OnCollisionExit2D(Collision2D coll){

@@ -27,5 +27,6 @@ public class GameManager : MonoBehaviour {
 			gameStarted = false;
 			soundtrack.Play ();
 		}
+			
 	}
 }

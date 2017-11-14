@@ -5,16 +5,16 @@ using UnityEngine;
 public class GloveHealth : MonoBehaviour {
 
 	public int health;
-	bool gameOver;
+	GameManager gameManager;
 	// Use this for initialization
 	void Start () {
-		gameOver = GameObject.Find ("GameManager").GetComponent<GameManager>().gameOver;
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (health <= 0) {
-			gameOver = true;
+			gameManager.gameOver = true;
 		}
 	}
 }
