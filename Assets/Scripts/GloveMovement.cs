@@ -7,48 +7,57 @@ public class GloveMovement : MonoBehaviour {
 	Rigidbody2D rb;
 
 	private bool isMoving = false;
+	private bool isPunching = false;
 
 	public float jiggle_offset = 0.4f;
 
+	private Vector3 startScale;
 	private Vector2 startPosition;
 	private Vector2 newVelocity;
 
+	public float punchSpeed;
 	public float gloveSpeed;
 	public float gloveScale;
+	public float gloveYMin;
+	public float gloveYMax;
 
 	public GameObject curtain;
+
+	private bool cantPunch = false;
 
 
 	void Start () {
 
 		rb = this.GetComponent<Rigidbody2D> ();
-		startPosition = this.transform.position;//new Vector2 (0, -3.6f);
+		startScale = transform.localScale;
+		startPosition = rb.position;//new Vector2 (0, -3.6f);
 	}
 	
 	void Update () {
 
-		if (!curtain)
+		if (rb.position.y > gloveYMax || rb.position.y < gloveYMin) {
+			resetGlove ();
+		} else if (!curtain) {
 			moveGlove ();
-		
-		scaleGlove ();
+			scaleGlove ();
+		}
 
 	}
 
-	//basic WASD controls
+	//glove can move left or right with A or D, and will reset to starting position when key is lifted
+	//when W is pushed, the glove will punch up quickly
 
 	void moveGlove(){
 
-		Vector2 newVelocity = new Vector2 (0, 0);
+		newVelocity = new Vector2 (0, 0);
 
 		isMoving = false;
 
-		if(Input.GetKey(KeyCode.S)){
+		if(Input.GetKey(KeyCode.W) && !isPunching && !cantPunch){
 			isMoving = true;
-			newVelocity += new Vector2(0, -1 * gloveSpeed);
-		}
-		if(Input.GetKey(KeyCode.W)){
-			isMoving = true;
-			newVelocity += new Vector2(0, gloveSpeed);
+			isPunching = true;
+			newVelocity += new Vector2(0, punchSpeed);
+
 		}
 
 		if(Input.GetKey(KeyCode.A)){
@@ -61,16 +70,38 @@ public class GloveMovement : MonoBehaviour {
 			newVelocity += new Vector2 (gloveSpeed, 0);
 		} 
 
+		if ((Input.GetKeyUp(KeyCode.W)) || (rb.position.y >= 0))
+			cantPunch = true;
+
+		if (rb.position.y <= startPosition.y+1)
+			cantPunch = false;
+			
 		rb.velocity = newVelocity;
 
-		if (!isMoving) {
+		resetCheck ();
+
+		if (!isMoving && !isPunching) {
+			Debug.Log ("Resetting.");
 			resetGlove ();
+		}
+
+	}
+
+	void resetCheck() {
+		if (rb.position.y >= startPosition.y) {
+			Debug.Log ("marking unpunch");
+			isPunching = false;
 		}
 	}
 
+	//the glove grows in scale as it goes up the Y axis
 	void scaleGlove(){
-		if (rb.velocity.y > 0) transform.localScale += new Vector3 (gloveScale, gloveScale, 0);
-		if (rb.velocity.y < 0) transform.localScale -= new Vector3 (gloveScale, gloveScale, 0);
+		if (rb.velocity.y > 0) 
+			transform.localScale += new Vector3 (gloveScale, gloveScale, 0);
+		if (rb.velocity.y < 0 && transform.localScale.y > startScale.y) 
+			transform.localScale -= new Vector3 (gloveScale, gloveScale, 0);
+		if (rb.velocity.y == 0)
+			transform.localScale = startScale;
 
 	}
 

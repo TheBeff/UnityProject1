@@ -34,7 +34,13 @@ public class ScrollingObject : MonoBehaviour {
 		} else {
 			transform.position = new Vector3 (0, newVerticalPosition, 0);
 		}
-
-
 	}
+
+	/*void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log ("Colliding");
+		if (collision.gameObject.tag == "background") {
+			Debug.Log ("Moving");
+			transform.position += new Vector3 (0, 0.1f, 0);
+		}
+	}*/
 }

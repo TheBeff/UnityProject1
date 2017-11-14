@@ -82,7 +82,7 @@ public class EnemyMovement : MonoBehaviour {
 
 		//if it's time to attack, do so
 
-		if (timer <= 0) {
+		if (timer <= level) {
 			attacking = true;
 		} 
 		if (attacking) {
@@ -107,8 +107,10 @@ public class EnemyMovement : MonoBehaviour {
 	void attack(){
 		Debug.DrawRay (transform.position, glove.transform.position);
 		Debug.Log ("attacked!");
+		transform.rotation = Quaternion.identity;
 		newVelocity = (gloveRb.position - rb.position).normalized * (enemySpeed * (level + 1));
 		rb.velocity = newVelocity;
+		rb.angularVelocity = 0;
 	}
 
 	void damage(){

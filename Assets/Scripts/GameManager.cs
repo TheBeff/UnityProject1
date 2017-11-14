@@ -50,19 +50,23 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//play the intro music at start
 		if (intro && !introMusicPlayed) {
 			theme.PlayOneShot (theme.clip);
 			introMusicPlayed = true;
 		}
 			
+		//play the soundtrack once space is pressed
 		if (!intro && gameStarted) {
 			gameStarted = false;
 			theme.Stop ();
 			soundtrack.Play ();
 		}
 
+		//load gameOver scene if Freddie dies
 		if (gameOver)
 			SceneManager.LoadScene ("GameOver");
+
 
 		scoreText.text = "BOB LEVEL: " + (spawner.level + 1);
 		healthText.text = "FREDDIE HP: " + (gloveHealth.health);

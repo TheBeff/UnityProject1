@@ -207,6 +207,7 @@ MonoBehaviour:
   targetXMax: 3.4
   targetBounceDistance: 0.5
   enemySpeed: 4
+  timeToAttack: 10
   bobOw: {fileID: 8300000, guid: 053e76f82ba5445c1bdfd324dd722a79, type: 3}
 --- !u!212 &212135241114644622
 SpriteRenderer:
